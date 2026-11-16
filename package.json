@@ -1,0 +1,21 @@
+{
+  "name": "loan-platform",
+  "private": true,
+  "packageManager": "pnpm@10.28.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm --filter @loan-platform/api-client build && pnpm --parallel --filter \"./apps/*\" dev",
+    "typecheck": "pnpm --filter @loan-platform/api-client build && pnpm -r typecheck",
+    "test": "pnpm --filter @loan-platform/api-client build && pnpm --filter @loan-platform/api test",
+    "db:up": "docker compose up -d",
+    "db:migrate": "pnpm --filter @loan-platform/api db:migrate",
+    "tenant:create": "pnpm --filter @loan-platform/api tenant:create"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "typescript": "~5.9.3"
+  }
+}
